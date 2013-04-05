@@ -1,0 +1,8 @@
+<h1><%= @project.title %></h1>
+
+<h3>Items</h3>
+<ul>
+  <% @project.items.each do |item| %>
+  <li><%= link_to item.title, item_url(item) %></li><br />
+  <% end%>
+</ul>
