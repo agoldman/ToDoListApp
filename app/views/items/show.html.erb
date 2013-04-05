@@ -1,0 +1,9 @@
+<h1><%=@item.title%><h1>
+
+  <h2><%= @item.description %><h2/>
+
+   <h3>  Completed? <%= @item.completed ? "Yep" : "Nope" %><h3/>
+
+     <%= link_to "Back to This Project", project_url(@item.project)%> <br />
+
+     <%= link_to "Back to All Projects", projects_url%>

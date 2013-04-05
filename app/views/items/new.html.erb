@@ -1,0 +1,25 @@
+<h3> Make a New Item <h3>
+
+<%= form_for(@item) do |f| %>
+<%= f.label :title %>
+<%= f.text_field :title %> <br/ ><br/ >
+
+<%= f.label :description %>
+<%= f.text_field :description %> <br/ ><br/ >
+
+<%= f.label :projects%>
+<%= f.collection_select(:project_id, Project.all, :id, :title)%><br/ ><br/ >
+
+<%= f.radio_button(:completed, true)%>
+<%= f.label(:completed_true, "Task Completed")%><br/ ><br/ >
+
+<%= radio_button_tag(:completed, false)%>
+<%= label_tag(:completed_false, "Not Done Yet")%><br/ ><br/ >
+
+<%= f.submit%>
+
+
+<% end %>
+
+<%= link_to "Back to All Projects", projects_url %> <br/ >
+<%= link_to "Back to All Items", items_url %>

@@ -4,4 +4,21 @@ class ItemsController < ActionController::Base
     @items = Item.all
   end
 
+  def show
+    @item = Item.find(params[:id])
+  end
+
+  def new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(params[:item])
+    if @item.save
+      redirect_to item_url(@item)
+    else
+      render :new
+    end
+  end
+
 end

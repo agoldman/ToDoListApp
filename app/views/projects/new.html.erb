@@ -1,0 +1,11 @@
+<h2> Make a project, Plz <h2/>
+
+<%= form_for(@project) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <br/ >
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Make Project" %>
+<% end %>

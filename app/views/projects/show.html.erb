@@ -1,8 +1,11 @@
-<h1><%= @project.title %></h1>
+<h1><%= @project.title %>: <%= @project.description %> </h1>
 
-<h3>Items</h3>
+<h2>Items</h2>
 <ul>
   <% @project.items.each do |item| %>
-  <li><%= link_to item.title, item_url(item) %></li><br />
+  <li><%= link_to item.title, item_url(item) %> ->
+      <%= item.completed ? "Done!" : "Not Done" %> </li><br />
   <% end%>
 </ul>
+
+<%= link_to "Back to All Projects", projects_url%>
