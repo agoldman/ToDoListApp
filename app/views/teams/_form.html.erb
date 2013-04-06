@@ -1,0 +1,26 @@
+<h1>Create A New Team</h1>
+
+<%= form_for(@team) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br/ > <br/ >
+
+ <h2> Select Team Members:</h2>
+  <% User.all.each do |user| %>
+  <%=
+  check_box_tag(
+    "team[user_ids][]",
+    user.id,
+    @team.user_ids.include?(user.id),
+    :id => "team_user_ids_#{user.id}"
+  )
+  %>
+
+  <%= label_tag "team_user_ids_#{user.id}", user.name %>
+   <br />
+   <% end %>
+    <br/ >
+  <%= hidden_field_tag "team[user_ids][]"%>
+
+  <%= f.submit %>
+<% end %>

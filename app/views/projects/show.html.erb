@@ -1,11 +1,25 @@
-<h1><%= @project.title %>: <%= @project.description %> </h1>
+<h1>Project: <%= @project.title %><br />
+Description:  <%= @project.description %> </h1>
 
 <h2>Items</h2>
 <ul>
   <% @project.items.each do |item| %>
-  <li><%= link_to item.title, item_url(item) %> ->
-      <%= item.completed ? "Done!" : "Not Done" %> </li><br />
-  <% end%>
+  <%= link_to item.title, item_url(item)%>
+
+    <%= form_for(item) do |f| %>
+      <%= label_tag("completed_#{item.id}", "Item Completed")%>
+      <%= check_box_tag(
+        :completed,
+        true,
+        item.completed ? true : false ,
+        :id => "completed_#{item.id}")%>
+    <% end %>
+    <br /><br />
+ <% end%>
 </ul>
 
-<%= link_to "Back to All Projects", projects_url%>
+<%= link_to "Update this Project", edit_team_project_url(@project.id)%><br />
+
+<%= link_to "Show Item List with more Details", project_items_url(@project.id)%><br />
+
+<%= link_to "Back to My Team Page", team_url(@project.team)%><br />

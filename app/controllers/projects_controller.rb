@@ -10,6 +10,7 @@ class ProjectsController < ActionController::Base
 
   def new
     @project = Project.new
+    @team_id = params[:team_id]
   end
 
   def create
@@ -19,5 +20,16 @@ class ProjectsController < ActionController::Base
     else
       render :new
     end
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+    @team_id = params[:team_id]
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @project.update_attributes(params[:project])
+    redirect_to project_url(@project)
   end
 end

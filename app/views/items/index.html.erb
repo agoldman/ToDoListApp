@@ -1,7 +1,9 @@
 <h1>Items List</h1>
 <ul>
-  <% @items.each do |item| %>
-  <li><%= link_to item.title, item_url(item) %></li>
+  <% @project.items.each do |item| %>
+  <li><%= link_to item.title, item_url(item) %>
+    <%= item.description%></li>
+
   <% end %>
 </ul>
 <%= link_to "Create A New Item", new_item_url %><br />
